@@ -8,8 +8,6 @@ class Form extends Component {
     number: '',
   };
 
-  nameInputId = nanoid();
-
   handleChange = e => {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
@@ -31,7 +29,7 @@ class Form extends Component {
     return (
       <div className={css.formContainer}>
         <form className={css.form} onSubmit={this.handleSubmit}>
-          <label htmlFor={this.nameInputId}>
+          <label>
             <input
               className={css.input}
               type="text"
@@ -39,11 +37,10 @@ class Form extends Component {
               placeholder="Name"
               value={this.state.name}
               onChange={this.handleChange}
-              id={this.nameInputId}
               required
             />
           </label>
-          <label htmlFor={this.numberInputId}>
+          <label>
             <input
               className={css.input}
               type="tel"

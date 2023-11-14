@@ -40,13 +40,15 @@ class App extends Component {
   };
 
   getVisibleContacts = () => {
-    const { filter } = this.state;
-    const normilizedFilter = filter.toLowerCase();
-    return this.state.contacts.filter(contacts =>
-      contacts.name.toLowerCase().includes(normilizedFilter)
+    const { filter, contacts } = this.state;
+    if (!filter.trim()) {
+      return contacts;
+    }
+    const normalizedFilter = filter.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
-
   deleteContact = id => {
     this.setState(prev => ({
       contacts: prev.contacts.filter(el => el.id !== id),
